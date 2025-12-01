@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html {
@@ -81,6 +82,33 @@
         .neural-core:hover .core-glow {
             box-shadow: 0 0 50px 15px rgba(59, 130, 246, 0.6), 0 0 30px 8px rgba(45, 212, 191, 0.5), inset 0 0 20px 5px rgba(59, 130, 246, 0.5);
             animation: none;
+        }
+
+        /* n8n Chat Theme Overrides */
+        :root {
+            --chat--color-primary: #2563eb;
+            --chat--color-secondary: #0ea5e9;
+            --chat--color-background: #ffffff;
+            --chat--color-font: #0f172a;
+            --chat--border-radius: 1.5rem;
+            --chat--window--width: 400px;
+            --chat--window--height: 600px;
+            
+            /* Header Styling - Corrected variable names with double dashes */
+            --chat--header--background: linear-gradient(135deg, #9333ea 0%, #2563eb 100%);
+            --chat--header--color: #ffffff;
+            
+            --chat--button-background: #2563eb;
+            --chat--button-font-color: #ffffff;
+            --chat--message--bot--background: #f1f5f9;
+            --chat--message--bot--font-color: #0f172a;
+            --chat--message--user--background: #2563eb;
+            --chat--message--user--font-color: #ffffff;
+            
+            /* Toggle Button Styling */
+            --chat--toggle--background: linear-gradient(135deg, #9333ea 0%, #2563eb 100%);
+            --chat--toggle--font-color: #ffffff;
+            --chat--toggle--hover--background: linear-gradient(135deg, #7e22ce 0%, #1d4ed8 100%);
         }
 
     </style>
@@ -163,7 +191,29 @@
 }
 </script>
     
-    <script src="https://cdn.jsdelivr.net/npm/@n8n/chat@latest/dist/chat.js"></script>
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+        createChat({
+            webhookUrl: 'https://n8n.roadmap.casa/webhook/ba471ac2-08a5-4185-a011-60684d43e0b6/chat',
+            initialMessages: [
+                'Hello! 👋 Welcome to I AM Certified.',
+                'How can we help you validate your team\'s expertise today?'
+            ],
+            i18n: {
+                en: {
+                    title: 'I AM Certified Support',
+                    subtitle: 'Ask us anything',
+                }
+            },
+            style: {
+                width: '100%',
+                height: '100%',
+                position: 'relative',
+                zIndex: '9999',
+            }
+        });
+    </script>
     <script type="module" src="index.js"></script>
 <script type="module" src="/index.tsx"></script>
 </body>

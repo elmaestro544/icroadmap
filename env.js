@@ -19,6 +19,6 @@ window.process.env = {
   
   // --- Supabase ---
   // Get your project URL and anon key from your Supabase project settings
-  SUPABASE_URL: 'https://rcgogvnelswlbpqffzwy.supabase.co',
-  SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJjZ29ndm5lbHN3bGJwcWZmend5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM4MTI0MjEsImV4cCI6MjA3OTM4ODQyMX0.JH5JYUrp4p5n1LnVe_cPDGJSaCpUufLQav2ejFilo3w',
+  SUPABASE_URL: 'YOUR_SUPABASE_URL_HERE',
+  SUPABASE_KEY: 'YOUR_SUPABASE_KEY_HERE',
 };

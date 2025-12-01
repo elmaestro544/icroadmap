@@ -1183,63 +1183,6 @@ const App = () => {
 
   const t = i18n[language];
   
-  useEffect(() => {
-    const initializeN8nChat = () => {
-      if (window.n8nChat) {
-        const config = {
-          webhookUrl: 'https://n8n.roadmap.casa/webhook/4ca36ee3-8e89-4277-ada7-82560d2be2e8',
-          chatTitle: t.chatbot.title,
-          welcomeMessage: t.chatbot.greeting,
-          placeholderText: t.chatbot.placeholder,
-        };
-
-        if (theme === 'dark') {
-          Object.assign(config, {
-            headerBackgroundColor: '#0f172a',
-            headerTextColor: '#f8fafc',
-            bubbleBackgroundColor: '#9333ea',
-            bubbleTextColor: '#f8fafc',
-            botMessageBackgroundColor: '#1e293b',
-            botMessageTextColor: '#f8fafc',
-            userMessageBackgroundColor: '#2563eb',
-            userMessageTextColor: '#f8fafc',
-            chatWindowBackgroundColor: '#020617',
-            chatWindowTextColor: '#f8fafc',
-            poweredByTextColor: '#94a3b8',
-          });
-        } else { // light theme
-          Object.assign(config, {
-            headerBackgroundColor: '#f1f5f9',
-            headerTextColor: '#020617',
-            bubbleBackgroundColor: '#9333ea',
-            bubbleTextColor: '#ffffff',
-            botMessageBackgroundColor: '#e2e8f0',
-            botMessageTextColor: '#020617',
-            userMessageBackgroundColor: '#2563eb',
-            userMessageTextColor: '#ffffff',
-            chatWindowBackgroundColor: '#ffffff',
-            chatWindowTextColor: '#020617',
-            poweredByTextColor: '#64748b',
-          });
-        }
-        window.n8nChat.init(config);
-      }
-    };
-    
-    // Add listener to handle the case where the script loads AFTER this effect runs.
-    window.addEventListener('n8n-chat-loaded', initializeN8nChat);
-
-    // Call immediately to handle the case where the script has already loaded
-    // BEFORE this effect runs (or on subsequent re-renders).
-    initializeN8nChat();
-    
-    // Cleanup the listener when the component unmounts or dependencies change.
-    return () => {
-      window.removeEventListener('n8n-chat-loaded', initializeN8nChat);
-    };
-
-  }, [language, t, theme]);
-
   const handleNavigateHome = () => {
     if (currentPage === 'home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
